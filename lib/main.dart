@@ -1,3 +1,4 @@
+import 'package:cloth_e_commerce/screen/home/home_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -25,9 +26,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: Scaffold(
-        body: Container(),
-      ),
+      home: const HomeScreen(),
     );
   }
 }
