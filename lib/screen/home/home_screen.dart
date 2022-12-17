@@ -61,61 +61,57 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: Padding(
-          padding: const EdgeInsets.only(left: 15, top: 15, right: 15),
-          child: Column(
+    return Padding(
+      padding: const EdgeInsets.only(left: 15, top: 15, right: 15),
+      child: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  SvgPicture.asset(
-                    'assets/images/menu.svg',
-                    width: 20,
-                  ),
-                  SizedBox(
-                      width: 35,
-                      child: CircleAvatar(
-                        backgroundColor: Colors.red,
-                        child: Image.network(
-                            'https://cdn.pixabay.com/photo/2015/03/04/22/35/avatar-659651_960_720.png'),
-                      ))
-                ],
+              SvgPicture.asset(
+                'assets/images/menu.svg',
+                width: 20,
               ),
-              const SizedBox(
-                height: 10,
-              ),
-              Expanded(
-                child: ListView(
-                  scrollDirection: Axis.vertical,
-                  children: [
-                    const SizedBox(
-                      height: 5,
-                    ),
-                    // Box Widget
-                    const _HomeBannerWidget(),
-                    _DressListWidget(
-                        titleTxt: 'Frock',
-                        iconUrl:
-                            'https://cdn-icons-png.flaticon.com/512/1785/1785375.png',
-                        dressList: _dressList),
-                    _DressListWidget(
-                        titleTxt: 'Leggings',
-                        iconUrl:
-                            'https://cdn-icons-png.flaticon.com/512/93/93313.png',
-                        dressList: _leggingsList),
-                    _DressListWidget(
-                        titleTxt: 'Hoodies',
-                        iconUrl:
-                            'https://cdn-icons-png.flaticon.com/512/2390/2390082.png',
-                        dressList: _hoodiesList),
-                  ],
-                ),
-              ),
+              SizedBox(
+                  width: 35,
+                  child: CircleAvatar(
+                    backgroundColor: Colors.red,
+                    child: Image.network(
+                        'https://cdn.pixabay.com/photo/2015/03/04/22/35/avatar-659651_960_720.png'),
+                  ))
             ],
           ),
-        ),
+          const SizedBox(
+            height: 10,
+          ),
+          Expanded(
+            child: ListView(
+              scrollDirection: Axis.vertical,
+              children: [
+                const SizedBox(
+                  height: 5,
+                ),
+                // Box Widget
+                const _HomeBannerWidget(),
+                _DressListWidget(
+                    titleTxt: 'Frock',
+                    iconUrl:
+                        'https://cdn-icons-png.flaticon.com/512/1785/1785375.png',
+                    dressList: _dressList),
+                _DressListWidget(
+                    titleTxt: 'Leggings',
+                    iconUrl:
+                        'https://cdn-icons-png.flaticon.com/512/93/93313.png',
+                    dressList: _leggingsList),
+                _DressListWidget(
+                    titleTxt: 'Hoodies',
+                    iconUrl:
+                        'https://cdn-icons-png.flaticon.com/512/2390/2390082.png',
+                    dressList: _hoodiesList),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
