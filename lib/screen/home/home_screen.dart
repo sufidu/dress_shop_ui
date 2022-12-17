@@ -61,11 +61,13 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(left: 15, top: 15, right: 15),
-      child: Column(
-        children: [
-          Row(
+    return Column(
+      children: [
+        Container(
+          padding:
+              const EdgeInsets.only(left: 15, top: 10, right: 15, bottom: 10),
+          color: Colors.white,
+          child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               SvgPicture.asset(
@@ -81,15 +83,22 @@ class HomeScreen extends StatelessWidget {
                   ))
             ],
           ),
-          const SizedBox(
-            height: 10,
-          ),
-          Expanded(
+        ),
+        Expanded(
+          child: Container(
+            padding: const EdgeInsets.only(left: 15, right: 15),
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [Colors.white, Colors.orange.shade100],
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+              ),
+            ),
             child: ListView(
               scrollDirection: Axis.vertical,
               children: [
                 const SizedBox(
-                  height: 5,
+                  height: 15,
                 ),
                 // Box Widget
                 const _HomeBannerWidget(),
@@ -108,11 +117,14 @@ class HomeScreen extends StatelessWidget {
                     iconUrl:
                         'https://cdn-icons-png.flaticon.com/512/2390/2390082.png',
                     dressList: _hoodiesList),
+                const SizedBox(
+                  height: 5,
+                ),
               ],
             ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
