@@ -26,7 +26,45 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: HomeScreen(),
+      home: const _MainScreen(),
+    );
+  }
+}
+
+class _MainScreen extends StatefulWidget {
+  const _MainScreen({super.key});
+
+  @override
+  State<_MainScreen> createState() => _MainScreenState();
+}
+
+class _MainScreenState extends State<_MainScreen> {
+  int _selectedIndex = 0;
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+      child: Scaffold(
+        body: HomeScreen(),
+        bottomNavigationBar: BottomNavigationBar(
+          items: const [
+            BottomNavigationBarItem(icon: Icon(Icons.home_outlined), label: ""),
+            BottomNavigationBarItem(icon: Icon(Icons.shop_outlined), label: ""),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.account_box_outlined), label: ""),
+          ],
+          currentIndex: _selectedIndex,
+          onTap: _onItemTapped,
+          selectedItemColor: Colors.black54,
+          unselectedItemColor: Colors.black26,
+        ),
+      ),
     );
   }
 }
