@@ -188,8 +188,7 @@ class _DressListWidget extends StatelessWidget {
   final List<Dress> dressList;
 
   const _DressListWidget(
-      {super.key,
-      required this.titleTxt,
+      {required this.titleTxt,
       required this.iconUrl,
       required this.dressList});
 

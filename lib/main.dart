@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
 }
 
 class _MainScreen extends StatefulWidget {
-  const _MainScreen({super.key});
+  const _MainScreen();
 
   @override
   State<_MainScreen> createState() => _MainScreenState();
