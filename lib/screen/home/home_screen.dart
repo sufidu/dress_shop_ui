@@ -1,4 +1,5 @@
 import 'package:cloth_e_commerce/models/dress.dart';
+import 'package:cloth_e_commerce/screen/details/details_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -188,10 +189,7 @@ class _DressListWidget extends StatelessWidget {
   final List<Dress> dressList;
 
   const _DressListWidget(
-      {super.key,
-      required this.titleTxt,
-      required this.iconUrl,
-      required this.dressList});
+      {required this.titleTxt, required this.iconUrl, required this.dressList});
 
   @override
   Widget build(BuildContext context) {
@@ -224,45 +222,55 @@ class _DressListWidget extends StatelessWidget {
               scrollDirection: Axis.horizontal,
               itemCount: dressList.length,
               itemBuilder: (context, index) {
-                return Card(
-                  elevation: 5,
-                  child: Container(
-                    width: 120,
-                    padding: const EdgeInsets.all(10.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        SizedBox(
-                          height: 60,
-                          width: 100,
-                          child: ClipRRect(
+                return GestureDetector(
+                  onTap: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => DetailsScreen(
+                              titleTxt: dressList[index].name,
+                              imgUrl: dressList[index].imgUrl,
+                              price: dressList[index].price,
+                            )));
+                  },
+                  child: Card(
+                    elevation: 5,
+                    child: Container(
+                      width: 120,
+                      padding: const EdgeInsets.all(10.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          SizedBox(
+                            height: 60,
+                            width: 100,
+                            child: ClipRRect(
+                                borderRadius: BorderRadius.circular(5),
+                                child: Image.network(
+                                  dressList[index].imgUrl,
+                                  width: 90,
+                                  fit: BoxFit.fitWidth,
+                                )),
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Container(
+                            padding: const EdgeInsets.fromLTRB(5, 3, 5, 3),
+                            decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(5),
-                              child: Image.network(
-                                dressList[index].imgUrl,
-                                width: 90,
-                                fit: BoxFit.fitWidth,
-                              )),
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        Container(
-                          padding: const EdgeInsets.fromLTRB(5, 3, 5, 3),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(5),
-                            color: Colors.orange.shade100,
+                              color: Colors.orange.shade100,
+                            ),
+                            child: Text(
+                              dressList[index].name,
+                              style: TextStyle(color: Colors.orange.shade800),
+                              maxLines: 1,
+                            ),
                           ),
-                          child: Text(
-                            dressList[index].name,
-                            style: TextStyle(color: Colors.orange.shade800),
-                            maxLines: 1,
+                          const SizedBox(
+                            height: 5,
                           ),
-                        ),
-                        const SizedBox(
-                          height: 5,
-                        ),
-                        Text("Price: ${dressList[index].price}")
-                      ],
+                          Text("Price: ${dressList[index].price}")
+                        ],
+                      ),
                     ),
                   ),
                 );
