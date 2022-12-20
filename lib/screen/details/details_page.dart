@@ -216,6 +216,22 @@ class _DetailsScreenState extends State<DetailsScreen> {
             ),
           ),
         ),
+        floatingActionButton: FloatingActionButton.extended(
+          onPressed: () {},
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(6),
+          ),
+          label: Text(
+            "Add to cart",
+            style: TextStyle(fontSize: 20, color: Colors.orange.shade200),
+          ),
+          icon: Icon(
+            Icons.shopping_basket,
+            color: Colors.orange.shade200,
+          ),
+          backgroundColor: Colors.black87,
+        ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       ),
     );
   }
