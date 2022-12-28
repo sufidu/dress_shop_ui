@@ -34,16 +34,16 @@ class _DetailsScreenState extends State<DetailsScreen> {
   }
 
   _getPaletteColorFormImage() async {
-    final PaletteGenerator _generator =
+    final PaletteGenerator generator =
         await PaletteGenerator.fromImageProvider(
       NetworkImage(widget.imgUrl),
       size: const Size(200, 100),
     );
 
     _colorAppBar =
-        _generator.dominantColor ?? PaletteColor(Colors.amber.shade400, 2);
+        generator.dominantColor ?? PaletteColor(Colors.amber.shade400, 2);
     _colorBody =
-        _generator.dominantColor ?? PaletteColor(Colors.transparent, 2);
+        generator.dominantColor ?? PaletteColor(Colors.transparent, 2);
     setState(() {});
   }
 
