@@ -10,7 +10,7 @@ class HomeScreen extends StatelessWidget {
     const Dress(
         imgUrl:
             'https://bdmanja.com/wp-content/uploads/2021/09/Coca-Cola-Printed-Baby-Frock-Set-300x300.jpg',
-        name: 'Coca Cola',
+        name: 'White Frock',
         price: 380.00),
     const Dress(
         imgUrl:
