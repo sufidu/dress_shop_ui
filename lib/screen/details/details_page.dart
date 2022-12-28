@@ -19,6 +19,14 @@ class DetailsScreen extends StatefulWidget {
 class _DetailsScreenState extends State<DetailsScreen> {
   late PaletteColor _colorAppBar = PaletteColor(Colors.amber.shade400, 2);
   late PaletteColor _colorBody = PaletteColor(Colors.transparent, 2);
+
+  final List<String> _dressList = [
+    'https://bdmanja.com/wp-content/uploads/2021/09/Coca-Cola-Printed-Baby-Frock-Set-300x300.jpg',
+    'https://bdmanja.com/wp-content/uploads/2021/09/Baby-Frock-Dresses-Best-Price-in-Bangladesh-300x300.jpg',
+    'https://bdmanja.com/wp-content/uploads/2021/08/Pink-Colour-Baby-Girls-Leggings-in-Bangladesh-300x300.jpg',
+    'https://bdmanja.com/wp-content/uploads/2021/10/Raglan-Hoodie-Navy-Blue-Sleeve-With-White-Color-Front-300x300.jpg'
+  ];
+
   @override
   void initState() {
     super.initState();
@@ -208,10 +216,24 @@ class _DetailsScreenState extends State<DetailsScreen> {
                             fontSize: 15,
                             fontWeight: FontWeight.bold,
                             color: Colors.black87),
-                      )
+                      ),
+                      const SizedBox(
+                        height: 25,
+                      ),
+                      const Text(
+                        "Similar Products:",
+                        style: TextStyle(
+                            fontSize: 18,
+                            color: Colors.black54,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      _similarGridItems(_dressList)
                     ],
                   ),
-                )
+                ),
               ],
             ),
           ),
@@ -234,5 +256,29 @@ class _DetailsScreenState extends State<DetailsScreen> {
         floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       ),
     );
+  }
+
+  GridView _similarGridItems(List<String> dressUrls) {
+    return GridView.builder(
+      shrinkWrap: true,
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 3,
+          mainAxisSpacing: 8,
+          crossAxisSpacing: 8
+        ),
+        itemCount: dressUrls.length,
+        itemBuilder: ((context, index) {
+          return SizedBox(
+            height: 800,
+            width: 100,
+            child: ClipRRect(
+                borderRadius: BorderRadius.circular(5),
+                child: Image.network(
+                  dressUrls[index],
+                  width: 90,
+                  fit: BoxFit.fitWidth,
+                )),
+          );
+        }));
   }
 }
